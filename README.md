@@ -15,7 +15,7 @@ This simulation game was created as part of my coursework in Business Analysis a
 
 This game immerses players in the life of a Hunger Games tribute. Using Python, players respond to text-based prompts to make decisions that directly influence their survival. Each choice can lead to different scenarios and outcomes, enhancing the game's replayability.
 
-![Hunger Games Arena](https://static.wikia.nocookie.net/thehungergames/images/c/c3/Arena_75th.png/revision/latest?cb=20131029043339)  
+![Hunger Games Arena](/pixelcut-export.jpeg)  
 
 ## Key Features
 
