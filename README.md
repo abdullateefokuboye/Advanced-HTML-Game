@@ -3,9 +3,6 @@
 
 
 ![Hunger Games Image from Wikipedia](https://upload.wikimedia.org/wikipedia/en/3/39/The_Hunger_Games_cover.jpg)
-## Introduction
-
-Experience the thrill and strategic challenge of the Hunger Games with this text-based Python simulation game. Step into the shoes of a tribute, make critical survival decisions, and navigate the complexities of the arena.
 
 ## Project Context
 
@@ -18,44 +15,6 @@ This game immerses players in the life of a Hunger Games tribute. Using Python, 
 ![Hunger Games Arena](/pixelcut-export.jpeg)  
 
 ## Key Features
-
-### Initial Setup
-
-At the start of the game, players are initialized with specific attributes such as health, strength, and intelligence that influence their performance throughout the game.
-
-```python
-def initialize_player(health, strength, intelligence):
-    return {
-        'health': health,
-        'strength': strength,
-        'intelligence': intelligence,
-        'inventory': []
-    }
-```
-*Initializes the player with health, strength, intelligence, and an empty inventory.*
-
-### Decision Making
-
-Players choose their actions, each affecting their survival odds. Here’s how players can interact with the game:
-
-```python
-def choose_action(player):
-    print("Choose your action:")
-    print("1. Search for food")
-    print("2. Hunt")
-    print("3. Hide")
-    action = input("> ")
-    if action == '1':
-        search_for_food(player)
-    elif action == '2':
-        hunt(player)
-    elif action == '3':
-        hide(player)
-    else:
-        print("Invalid action")
-        choose_action(player)
-```
-*Prompts player to choose an action and processes the input.*
 
 ### Game Dynamics
 
@@ -72,6 +31,103 @@ The game's mechanics include managing resources, maintaining health, and making 
 ## Game Mechanics
 - **Decision Making**: Key to surviving in the game. Each choice can lead to different outcomes.
 - **Resource Management**: Players decide which supplies to gather, impacting their ability to survive.
+
+# Text-based Simulation Game: Hunger Games Survival
+
+## Introduction
+
+Dive into the world of the Hunger Games with this Python-based simulation game. Here, you'll face various challenges, make strategic decisions, and attempt to survive in a hostile environment. Let's explore how the game works, the code that powers it, and what you can do to possibly beat it.
+
+## Game Mechanics
+
+### Player Class
+
+```python
+import random
+
+class Player:
+    def __init__(self):
+        self.health = 100
+        self.strength = random.randint(5, 10)
+        self.agility = random.randint(5, 10)
+        self.intelligence = random.randint(5, 10)
+        self.supplies = []
+
+    def display_stats(self):
+        print(f"Health: {self.health}, Strength: {self.strength}, Agility: {self.agility}, Intelligence: {self.intelligence}")
+```
+
+When a player is instantiated, they are randomly assigned strength, agility, and intelligence attributes, and their health is set to 100. These attributes will significantly influence their ability to handle the challenges ahead.
+
+### Core Functions
+
+#### Winning and Losing
+
+```python
+def win():
+    print("You survived... at least, the first day of the Hunger Games")
+
+def fail():
+    print("Your vision starts to fade, as you begin to drift to sleep. You hear a muffled cannon sound in the distance.")
+```
+
+The `win` and `fail` functions are crucial—they define the outcomes of key game scenarios, such as combat or strategic decisions.
+
+#### Getting Supplies
+
+```python
+def get_supplies(count):
+    available_supplies = ["SWORD", "BOW", "ARROWS", "CLUB", "KNIFE", "BACKPACK", "WATER"]
+    random.shuffle(available_supplies)
+    print("Available supplies:", available_supplies)
+    for i in range(count):
+        supply = input("Type the supply you'd like to get or STOP when you are done: ").upper()
+        if supply == "STOP":
+            break
+        elif supply in available_supplies:
+            player.supplies.append(supply)
+            available_supplies.remove(supply)
+            print(f"You have obtained a {supply}.")
+        else:
+            print(f"You couldn't find {supply} and wasted time looking for it.")
+```
+
+Players can select supplies from a randomized list, crucial for survival and combat. The outcome of these selections can affect the player's chances in combat.
+
+#### Combat Mechanics
+
+```python
+def combat():
+    if "SWORD" in player.supplies or "KNIFE" in player.supplies:
+        combat_strength = player.strength + 2
+    else:
+        combat_strength = player.strength
+
+    enemy_strength = random.randint(3, 10)
+    print("An enemy is approaching!")
+    choice = input("Do you FIGHT or RUN? ").upper()
+    if choice == "FIGHT" and combat_strength > enemy_strength:
+        print("You successfully defeated the enemy.")
+        win()
+    elif choice == "RUN" and player.agility > 5:
+        print("You managed to escape.")
+        win()
+    else:
+        print("You couldn't escape or defeat the enemy.")
+        fail()
+```
+
+Combat decisions hinge on the player's agility and the strength-enhancing supplies they have gathered. The player must decide to fight or flee based on their chances of success.
+
+### Starting the Game
+
+```python
+if __name__ == "__main__":
+    player = Player()
+    game()
+```
+
+The game initializes by creating a `Player` object and calling the `game` function, which manages the game's flow and player interactions.
 
 ## Conclusion
 
