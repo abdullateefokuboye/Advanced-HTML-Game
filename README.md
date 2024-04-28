@@ -1,4 +1,7 @@
 # Hunger Games Text-based Simulation Game
+[Back](https://abdullateefokuboye.github.io/)
+
+
 ![Hunger Games Image from Wikipedia](https://upload.wikimedia.org/wikipedia/en/3/39/The_Hunger_Games_cover.jpg)
 ## Introduction
 
@@ -78,3 +81,5 @@ For more information and updates, peruse the repo! [GitHub repository](https://g
 
 ## Citation
 Collins, S. (2008). *The Hunger Games*. First edition. New York, Scholastic Press.
+
+[Back to homepage](https://abdullateefokuboye.github.io/)
